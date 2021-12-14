@@ -161,14 +161,15 @@ yarn start
 
 ### コマンド
 
-開発時は `yarn start`, ローカルで利用する際は `yarn package`, electron appにアップロードする際は `yarn publish`を利用するのが基本
+開発時は `yarn start`, ローカルで利用する際は `yarn make` or `yarn package`, electron appにアップロードする際は `yarn publish`を利用するのが基本
 
 - `yarn start` : 付与されたディレクトリ(デフォルト .)のelectronを起動する。
   - 基本的に開発用、デフォルトではホットリロード
 - `yarn package`: outディレクトリに実行形式のパッケージを出力する
   - {app name}-{os}-{arc} というフォルダをコピーして利用できる
 - `yarn make`: outディレクトリに配布可能ファイルを作成
-  - `yarn package`の結果に加え、out/make ディレクトリが生成され、squirrelという形式のいわゆるインストールexeファイルが付与される
+  - `yarn package`の結果に加え、out/make ディレクトリが生成され、squirrelという形式のセットアップファイルが追加される
+    - セットアップを実行すると、windowsであれば {user directory}\AppData\Local\{app name} にpackageがインストールされ、デスクトップにショートカットが設置される
 - `yarn publish`: https://www.electronjs.org/apps へアップロードする
 
 
