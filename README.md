@@ -7,7 +7,7 @@ electronの動作実装サンプルです
 
 一通り実装することで「Hello from React!」と表示されます。
 
-### tsxを処理できるようにする
+### プロジェクト作成
 
 ```bash
 # コマンド実行により、electron-forgeのプロジェクトを作成
