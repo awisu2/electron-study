@@ -1,7 +1,12 @@
 # electron-study
 
-electronの動作実装サンプルです
+electron の動作実装サンプルです
 基本は electron-forge + webpack + typescript + react で構成
+
+## ドキュメント
+
+- 初期構築: このファイルです
+- [プロセス](./docs/process): メイン/レンダラー(+preload)プロセスについてと、ipc を利用した app 情報の取得
 
 ## 初期構築
 
@@ -19,9 +24,9 @@ yarn add react react-dom
 yarn add --dev @types/react @types/react-dom
 ```
 
-### tsxを処理できるようにする
+### tsx を処理できるようにする
 
-* tsconfig.json
+- tsconfig.json
 
 ```json
 {
@@ -33,14 +38,14 @@ yarn add --dev @types/react @types/react-dom
 }
 ```
 
-### preloadを有効にする
+### preload を有効にする
 
-* src/index.ts
+- src/index.ts
 
 ```ts
 ...
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string; //レンダラープロセススクリプトのファイルパス
-declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string; 
+declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 ...
 const createWindow = (): void => {
   // Create the browser window.
@@ -56,7 +61,7 @@ const createWindow = (): void => {
 ...
 ```
 
-* package.json
+- package.json
 
 ```json
 ...
@@ -76,49 +81,51 @@ const createWindow = (): void => {
 ...
 ```
 
-* src/preload.ts
+- src/preload.ts
 
 ```ts
-import {contextBridge} from "electron"
+import { contextBridge } from "electron";
 
 // windows.apiにpreload
 export class ContextBridgeApi {
-    public static readonly API_KEY = "api"
+  public static readonly API_KEY = "api";
 
-    render = () => {
-        console.log("preload!")
-    }
+  render = () => {
+    console.log("preload!");
+  };
 }
 
-contextBridge.exposeInMainWorld(ContextBridgeApi.API_KEY, new ContextBridgeApi())
+contextBridge.exposeInMainWorld(
+  ContextBridgeApi.API_KEY,
+  new ContextBridgeApi()
+);
 ```
 
-* src/renderer.ts
+- src/renderer.ts
 
-上記preload.tsの呼び出し
+上記 preload.ts の呼び出し
 
 ```ts
 // @ts-ignore
 const api: ContextBridgeApi = window.api;
-api.render()
+api.render();
 ```
 
+### react でレンダリング
 
-### reactでレンダリング
-
-* src/react/render.tsx
+- src/react/render.tsx
 
 ```tsx
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from "react-dom";
 
 export default function render() {
-    ReactDOM.render(<h2>Hello from React!</h2>, document.getElementById("app"));
+  ReactDOM.render(<h2>Hello from React!</h2>, document.getElementById("app"));
 }
 ```
 
-* src/preload.ts
+- src/preload.ts
 
-renderから、上記react用関数を呼び出し
+render から、上記 react 用関数を呼び出し
 
 ```ts
 ...
@@ -133,14 +140,14 @@ export class ContextBridgeApi {
 ...
 ```
 
-* src/index.html
+- src/index.html
 
-react用にid設定
+react 用に id 設定
 
 ```html
 <!DOCTYPE html>
 <html>
-...
+  ...
   <body>
     <div id="app" />
   </body>
@@ -155,21 +162,18 @@ yarn start
 
 ## 設定など
 
-- "src/index.ts" によって、windowsのサイズやデバッグメニューの表示などの設定を行えます
+- "src/index.ts" によって、windows のサイズやデバッグメニューの表示などの設定を行えます
 - コマンド:
-
 
 ### コマンド
 
-開発時は `yarn start`, ローカルで利用する際は `yarn make` or `yarn package`, electron appにアップロードする際は `yarn publish`を利用するのが基本
+開発時は `yarn start`, ローカルで利用する際は `yarn make` or `yarn package`, electron app にアップロードする際は `yarn publish`を利用するのが基本
 
-- `yarn start` : 付与されたディレクトリ(デフォルト .)のelectronを起動する。
+- `yarn start` : 付与されたディレクトリ(デフォルト .)の electron を起動する。
   - 基本的に開発用、デフォルトではホットリロード
-- `yarn package`: outディレクトリに実行形式のパッケージを出力する
+- `yarn package`: out ディレクトリに実行形式のパッケージを出力する
   - {app name}-{os}-{arc} というフォルダをコピーして利用できる
-- `yarn make`: outディレクトリに配布可能ファイルを作成
-  - `yarn package`の結果に加え、out/make ディレクトリが生成され、squirrelという形式のセットアップファイルが追加される
-    - セットアップを実行すると、windowsであれば {user directory}\AppData\Local\{app name} にpackageがインストールされ、デスクトップにショートカットが設置される
+- `yarn make`: out ディレクトリに配布可能ファイルを作成
+  - `yarn package`の結果に加え、out/make ディレクトリが生成され、squirrel という形式のセットアップファイルが追加される
+    - セットアップを実行すると、windows であれば {user directory}\AppData\Local\{app name} に package がインストールされ、デスクトップにショートカットが設置される
 - `yarn publish`: https://www.electronjs.org/apps へアップロードする
-
-
