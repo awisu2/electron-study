@@ -1,5 +1,10 @@
 import * as ReactDOM from 'react-dom';
+import Top  from './Top';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 export default function render() {
-    ReactDOM.render(<h2>Hello from React!</h2>, document.getElementById("app"));
+    ReactDOM.render(<Provider store={store}>
+        <Top />
+    </Provider>, document.getElementById("app"));
 }
