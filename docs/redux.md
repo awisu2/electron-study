@@ -123,7 +123,11 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 _store/reducers/counter.ts_
 
-(細かい話) ここでは RootState 型を取得するため cycle import になります。動作上問題にはなりませんが、気になる場合は selectore 要ファイルを別途用意したほうが良いかもです（せっかく統合されたファイルが分割されますが。。。）
+- createSlice によって、action, reducer 及び State を一括して生成
+  - name: action の prefix
+  - reducers 部の返却値は immer により reducere おなじみの...state を回避しているそうです
+    - [immerjs/immer: Create the next immutable state by mutating the current one](https://github.com/immerjs/immer)
+- (細かい話) ここでは RootState 型を取得するため cycle import になります。動作上問題にはなりませんが、気になる場合は selectore 要ファイルを別途用意したほうが良いかもです（せっかく統合されたファイルが分割されますが。。。）
 
 ```ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
