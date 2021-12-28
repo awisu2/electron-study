@@ -10,7 +10,6 @@ import { useState } from 'react'
 export default (): JSX.Element => {
   const count = useAppSelector(selectCount)
   const dispatch = useAppDispatch()
-
   const [n, setN] = useState(5)
 
   return (

@@ -31,7 +31,7 @@ const createWindow = (): void => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
 
   // Open the DevTools.
-  // Open the DevTools.
+  // when is not packeage
   if (!app.isPackaged) {
     mainWindow.webContents.openDevTools()
   }

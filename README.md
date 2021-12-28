@@ -8,6 +8,7 @@ electron の動作実装サンプルです
 - 初期構築: このファイルです
 - [プロセス](./docs/process.md): メイン/レンダラー(+preload)プロセスについてと、ipc を利用した app 情報の取得
 - [redux](./docs/redux.md): 複数のコンポーネント間で共通のデータを扱う
+- [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
 
 ## 初期構築
 
@@ -85,21 +86,18 @@ const createWindow = (): void => {
 - src/preload.ts
 
 ```ts
-import { contextBridge } from "electron";
+import { contextBridge } from 'electron'
 
 // windows.apiにpreload
 export class ContextBridgeApi {
-  public static readonly API_KEY = "api";
+  public static readonly API_KEY = 'api'
 
   render = () => {
-    console.log("preload!");
-  };
+    console.log('preload!')
+  }
 }
 
-contextBridge.exposeInMainWorld(
-  ContextBridgeApi.API_KEY,
-  new ContextBridgeApi()
-);
+contextBridge.exposeInMainWorld(ContextBridgeApi.API_KEY, new ContextBridgeApi())
 ```
 
 - src/renderer.ts
@@ -108,8 +106,8 @@ contextBridge.exposeInMainWorld(
 
 ```ts
 // @ts-ignore
-const api: ContextBridgeApi = window.api;
-api.render();
+const api: ContextBridgeApi = window.api
+api.render()
 ```
 
 ### react でレンダリング
@@ -117,10 +115,10 @@ api.render();
 - src/react/render.tsx
 
 ```tsx
-import * as ReactDOM from "react-dom";
+import * as ReactDOM from 'react-dom'
 
 export default function render() {
-  ReactDOM.render(<h2>Hello from React!</h2>, document.getElementById("app"));
+  ReactDOM.render(<h2>Hello from React!</h2>, document.getElementById('app'))
 }
 ```
 
