@@ -26,10 +26,10 @@
  * ```
  */
 
-import './index.css';
+import './index.css'
 
-console.log('👋 This message is being logged by "renderer.js", included via webpack');
+console.log('👋 This message is being logged by "renderer.js", included via webpack')
 
 // @ts-ignore
-const api: ContextBridgeApi = window.api;
+const api: ContextBridgeApi = window.api
 api.render()
