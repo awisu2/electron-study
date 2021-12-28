@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { paddings } from './args'
+import { ContentPaddding } from './args'
 
 const spaces = {
   zero: css`
@@ -11,7 +11,7 @@ const spaces = {
     padding: 100%;
   `,
   content: css`
-    padding: ${paddings.content};
+    padding: ${ContentPaddding.normal};
   `
 }
 
