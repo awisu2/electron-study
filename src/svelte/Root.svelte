@@ -6,6 +6,7 @@
 	import Top from './Top'
 	import Config from './Config'
 	import { derived } from 'svelte/store';
+	import { sectionMargin } from './styleArgs';
 
 	// store値を元に可変値を生成: [Stores / Derived stores • Svelte Tutorial](https://svelte.dev/tutorial/derived-stores)
 	const Main = derived(
@@ -25,7 +26,7 @@
 
 <Nav/>
 
-<h1>main contents</h1>
+<h1 style="margin-bottom: {sectionMargin.normal}">main contents</h1>
 
 <h2>direct if/else</h2>
 <!-- script内でも同様の処理をしているが、一応こういう事もできますよということで -->
@@ -39,3 +40,6 @@
 <h2>switch(or if, any) in script</h2>
 <!-- コンポーネントオブジェクトを表示: [Special elements / <svelte:component> • Svelte Tutorial](https://svelte.dev/tutorial/svelte-component) -->
 <svelte:component this={$Main} name="script"/>
+
+<style>
+</style>

@@ -13,6 +13,17 @@ javascript の UI フレームワーク。react, vue との対比を自身でも
   - [Stores / Writable stores • Svelte Tutorial](https://svelte.dev/tutorial/writable-stores)
   - 細かいことを言い出すと色々ありますが、redux の学習/実装/メンテコストを考えたらどれだけ楽かがわかるのではないでしょうか？
 
+## 実装解説(別名言い訳)
+
+- style 用のパラメータの共有について: styleArgs.ts というファイルを用意し、タグ部分の style に直接記述することにしている
+  - react で言ところの styled は一応あるにはあった(emotion など)が、どうも余計な一手間をかけている気がしてならない
+  - タグに style を書いちゃうの？
+    - いいんじゃないの？すでに component は個別に分けられ、style 自体も component ごとに反映されることになっているのだから
+  - style に直接書くからスニペット聞かないんだけれど？：ごめんなさい。でも emotion 使っても同じ話でしょ？
+  - styleArgs.ts はボリュームが増えていきそうだったらディレクトリにして分割するつもり
+  - styleArgs.ts に style 直接書かないの？：いいか悪いか不明なため一旦保留
+    - svelte や styled が分割することによって問題箇所をはっきりさせているみたいな記述をしているので、パラメータ部分だけをシェアすればいいかなと思っている
+
 ## svelte を実装する
 
 electron-forge でなるべく簡易にするため、svelte-loader を利用して実装しています
