@@ -7,8 +7,11 @@ electron の動作実装サンプルです
 
 - 初期構築: このファイルです
 - [プロセス](./docs/process.md): メイン/レンダラー(+preload)プロセスについてと、ipc を利用した app 情報の取得
-- [redux](./docs/redux.md): 複数のコンポーネント間で共通のデータを扱う
-- [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
+- [svelte](./docs/svelte.md): UI フレームワーク。とても記述が完結で、何よりも store の扱いが非常に楽
+  - 最新の main ブランチではこちらで UI を実装している(src/preload.ts でコメントの切り替えで react も動作します)
+- react: UI フレームワーク(現在コメントアウトになっていますが、かんたんな redux を利用した処理までは実装しています)
+  - [redux](./docs/redux.md): 複数のコンポーネント間で共通のデータを扱う
+  - [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
 
 ## 初期構築
 
