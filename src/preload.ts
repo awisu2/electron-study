@@ -14,7 +14,9 @@ export class ContextBridgeApi {
 
   // svelte
   render = () => {
-    // reactRender()
+    // render()
+
+    // svelteコンポーネントの呼び出し: https://svelte.dev/tutorial/making-an-app
     new svelteApp({
       target: document.getElementById('app'),
       props: {}
