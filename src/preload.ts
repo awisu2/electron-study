@@ -1,5 +1,4 @@
 import { contextBridge } from 'electron'
-// import render from './react/render'
 // @ts-ignore
 import svelteApp from './svelte/Root'
 
@@ -7,18 +6,13 @@ import svelteApp from './svelte/Root'
 export class ContextBridgeApi {
   public static readonly API_KEY = 'api'
 
-  // // react
-  // render = () => {
-  //   render()
-  // }
-
   // svelte
   render = () => {
     // render()
 
     // svelteコンポーネントの呼び出し: https://svelte.dev/tutorial/making-an-app
     new svelteApp({
-      target: document.getElementById('app'),
+      target: document.body,
       props: {}
     })
   }

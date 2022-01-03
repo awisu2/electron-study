@@ -1,7 +1,22 @@
 import { ipcRenderer } from 'electron'
-import { GETPAHTES_CHANNEL_ID, appData } from '../consts/ipc'
+import {
+  GET_APPDATA_CHANNEL,
+  READ_CONFIG_CHANNEL,
+  SAVE_CONFIG_CHANNEL,
+  AppData,
+  Config
+} from '../consts/ipc'
 
 // AppDataをcallbackしてくれるハンドラを呼び出し
-export const getAppData = (): Promise<appData> => {
-  return ipcRenderer.invoke(GETPAHTES_CHANNEL_ID)
+export const getAppData = (): Promise<AppData> => {
+  return ipcRenderer.invoke(GET_APPDATA_CHANNEL)
+}
+
+// AppDataをcallbackしてくれるハンドラを呼び出し
+export const readConfig = (): Promise<Config> => {
+  return ipcRenderer.invoke(READ_CONFIG_CHANNEL, { a: 1, b: 2 })
+}
+
+export const saveConfig = (config: Config): Promise<void> => {
+  return ipcRenderer.invoke(SAVE_CONFIG_CHANNEL, config)
 }

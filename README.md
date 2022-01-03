@@ -113,7 +113,15 @@ const api: ContextBridgeApi = window.api
 api.render()
 ```
 
-### react でレンダリング
+### svelte/react でレンダリング
+
+### svelte の場合
+
+svelte のパッケージをインストールしたら、このリポジトリの src ディレクトリをコピーするだけでも動作します。(src/react は不要なので削除)
+
+[svelte](./docs/svelte.md)
+
+### react の場合
 
 - src/react/render.tsx
 

@@ -1,5 +1,6 @@
 <script>
-	import {Counter, Text, Fade, Section} from './components'
+	import {Counter, Text, Fade} from '.'
+	import {Section} from './parts'
 	import {beforeUpdate, afterUpdate} from 'svelte'
 
   let number = 3
@@ -9,7 +10,7 @@
   // このコンポーネントではnumberが再レンダリングの対象となるので、Counterの値を変化させると実行されます
   // また、numberをコードから削除すると、更新対象がなくなるため関数は実行されません
   beforeUpdate(() => {
-    console.log("afterUpdate")
+    console.log("beforeUpdate")
   })
   afterUpdate(() => {
     console.log("afterUpdate")

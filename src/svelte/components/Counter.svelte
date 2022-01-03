@@ -1,4 +1,5 @@
 <script>
+  import {Button} from './parts'
   export let value = 0
 
   // 呼び出し元へのコールバック関数: https://svelte.dev/tutorial/component-bindings
@@ -14,7 +15,7 @@
 <!-- attrと変数名が同じ場合は省略可能: https://svelte.dev/tutorial/textarea-inputs -->
 <!-- bind:thisで自身を渡す: https://svelte.dev/tutorial/component-this -->
 <input type=number bind:value on:change={changeDispatch} bind:this={element} />
-<button on:click={() => value++}>+</button>
-<button on:click={() => value--}>-</button>
+<Button on:click={() => value++}>+</Button>
+<Button on:click={() => value--}>-</Button>
 
-<button on:click={() => {element.focus()}}>focus</button>
+<Button on:click={() => {element.focus()}}>focus</Button>
