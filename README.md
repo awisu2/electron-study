@@ -12,6 +12,7 @@ electron の動作実装サンプルです
 - react: UI フレームワーク(現在コメントアウトになっていますが、かんたんな redux を利用した処理までは実装しています)
   - [redux](./docs/redux.md): 複数のコンポーネント間で共通のデータを扱う
   - [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
+- [electron もろもろ](./docs/electron.md): 実行コマンド、アイコン設定など electron 自体を利用する際のもろもろ
 
 ## 初期構築
 
@@ -174,16 +175,3 @@ yarn start
 
 - "src/index.ts" によって、windows のサイズやデバッグメニューの表示などの設定を行えます
 - コマンド:
-
-### コマンド
-
-開発時は `yarn start`, ローカルで利用する際は `yarn make` or `yarn package`, electron app にアップロードする際は `yarn publish`を利用するのが基本
-
-- `yarn start` : 付与されたディレクトリ(デフォルト .)の electron を起動する。
-  - 基本的に開発用、デフォルトではホットリロード
-- `yarn package`: out ディレクトリに実行形式のパッケージを出力する
-  - {app name}-{os}-{arc} というフォルダをコピーして利用できる
-- `yarn make`: out ディレクトリに配布可能ファイルを作成
-  - `yarn package`の結果に加え、out/make ディレクトリが生成され、squirrel という形式のセットアップファイルが追加される
-    - セットアップを実行すると、windows であれば {user directory}\AppData\Local\{app name} に package がインストールされ、デスクトップにショートカットが設置される
-- `yarn publish`: https://www.electronjs.org/apps へアップロードする
