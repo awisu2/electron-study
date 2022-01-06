@@ -12,7 +12,7 @@ electron の動作実装サンプルです
 - react: UI フレームワーク(現在コメントアウトになっていますが、かんたんな redux を利用した処理までは実装しています)
   - [redux](./docs/redux.md): 複数のコンポーネント間で共通のデータを扱う
   - [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
-- [electron もろもろ](./docs/electron.md): 実行コマンド、アイコン設定など electron 自体を利用する際のもろもろ
+- [electron もろもろ](./docs/electron.md): 実行コマンド、アイコン設定、アプリ用ローカル画像のコピーなど electron 自体を利用する際のもろもろ
 
 ## 初期構築
 

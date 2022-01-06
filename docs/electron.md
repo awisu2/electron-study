@@ -6,6 +6,10 @@ electron の設定周りについて
 - アイコンを変更する: package.json の "config.forge.packagerConfig" へ "icon" を追加する
   - 例： `"icon": "./assets/app.ico"`
   - 注意事項: (検証不足の可能性あり) windows の場合、ファイル形式は ico でないと反映されず、またファイル名を app.ico にしないとデスクトップアイコンに反映されなかった
+- アプリ用画像の用意: アプリ用に画像を利用する場合は、copyWebpackPlugin を利用して、ビルド時に一緒に配置されるようにしておく(ビルドや install される際に current ディレクトリが変わるため)
+  - [CopyWebpackPlugin \| webpack](https://webpack.js.org/plugins/copy-webpack-plugin/)
+  - 利用したい画像が、url や絶対パスなどアプリがどこにあってもアクセス可能な場合は不要
+  - 例えば `{ from: "source", to: "dest" },` とした場合, `./dest/yourAsset.any` という感じでアクセスが可能
 
 ## コマンド
 
