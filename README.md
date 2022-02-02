@@ -17,6 +17,7 @@ node.js + chromium による統合 gui 環境
   - [redux](./docs/redux.md): 複数のコンポーネント間で共通のデータを扱う
   - [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
 - [electron もろもろ](./docs/electron.md): 実行コマンド、アイコン設定、アプリ用ローカル画像のコピーなど electron 自体を利用する際のもろもろ
+- [modules](./modules): electron 標準の module の動作サンプル。メニュー設定など
 
 ## 初期構築
 
