@@ -1,11 +1,15 @@
 # electron-study
 
-electron の動作実装サンプルです
-基本は electron-forge + webpack + typescript + react で構成
+[Electron \| JavaScript, HTML, CSS によるクロスプラットフォームなデスクトップアプリ開発](https://www.electronjs.org/)
+
+node.js + chromium による統合 gui 環境
+
+- electron とは?: GUI. Node.js 及び chromium が動作する環境ではほぼほぼ同じように動作する
 
 ## ドキュメント
 
-- 初期構築: このファイルです
+- [quickstart](./quickstart): とりあえずやってみる
+- [サンプル](./samples/basic): electron の動作実装サンプルです(electron-forge + webpack + typescript + react で構成)
 - [プロセス](./docs/process.md): メイン/レンダラー(+preload)プロセスについてと、ipc を利用した app 情報の取得
 - [svelte](./docs/svelte.md): UI フレームワーク。とても記述が完結で、何よりも store の扱いが非常に楽
   - 最新の main ブランチではこちらで UI を実装している(src/preload.ts でコメントの切り替えで react も動作します)
