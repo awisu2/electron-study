@@ -1,5 +1,12 @@
 # modules
 
+electron 自体の module のまとめ
+
+## お品書き
+
+- menu の設定
+- hot reload
+
 ## menu の設定
 
 アプリメニューの設定を行える
@@ -28,4 +35,22 @@
 const template = []
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
+```
+
+## hot reload
+
+[yan\-foto/electron\-reload: Simplest \( \) way to reload an electron app on file changes\!](https://github.com/yan-foto/electron-reload#readme)を利用
+
+[paulmillr/chokidar: Minimal and efficient cross\-platform file watching library](https://github.com/paulmillr/chokidar)を利用しファイルの変更を watch。設定内容に従い、electron のリロードを行っている
+
+_main.js_
+
+```js
+const isProd = process.env.NODE_ENV == 'production'
+
+// hot reload設定
+// require をした時点で有効化される。production 環境時は避けるようにする
+if (!isProd) {
+  require('electron-reload')(__dirname)
+}
 ```

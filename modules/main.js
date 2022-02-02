@@ -1,6 +1,12 @@
 const { app, BrowserWindow, Menu } = require('electron')
 const { join } = require('path')
-const isMac = process.platform === 'darwin'
+const isProd = process.env.NODE_ENV == 'production'
+
+// hot reload設定
+// require をした時点で有効化される。production 環境時は避けるようにする
+if (!isProd) {
+  require('electron-reload')(__dirname)
+}
 
 // 見た目部分を作成する関数
 const createWindow = () => {
