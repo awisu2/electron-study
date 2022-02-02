@@ -2,6 +2,13 @@
 
 [クイック スタート \| Electron](https://www.electronjs.org/ja/docs/latest/tutorial/quick-start)
 
+実施していることとポイント
+
+- quickstart に従ったスクリプトの実装
+- デバッグコンソールの表示
+- レンダラープロセスからプリロードスクリプトの実行
+- プリロードスクリプトの読み込み設定は、window 作成時に行われている
+
 ## 1. project の作成
 
 ```bash
@@ -67,6 +74,9 @@ const createWindow = () => {
 
   // index.htmlをセットする
   win.loadFile('index.html')
+
+  // デバッグコンソールの表示
+  win.webContents.openDevTools()
 }
 
 // 準備ができたら、windowを作成する
@@ -131,4 +141,46 @@ const createWindow = () => {
   ...
 }
 ...
+```
+
+## renderer から呼び出せるオブジェクトのセット
+
+_preload.js_
+
+```js
+const { contextBridge } = require('electron')
+...
+// レンダラープロセスから、windows.preloadで呼び出せる値を登録
+contextBridge.exposeInMainWorld('preload', {
+  hello: () => alert('hello preload!')
+})
+```
+
+_index.html_
+
+```html
+<!DOCTYPE html>
+<html>
+  ...
+  <body>
+    ...
+    <!-- preloadで登録された関数を実行 -->
+    <button id="hello">hello</button>
+    <script src="renderer.js"></script>
+  </body>
+</html>
+```
+
+_renderer.js_
+
+```js
+window.addEventListener('DOMContentLoaded', () => {
+  // #hello ボタンに preloadスクリプトの関数をセット
+  const element = document.getElementById('hello')
+  element.onclick = () => window.preload.hello()
+})
+```
+
+```bash
+yarn start
 ```

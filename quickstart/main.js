@@ -13,6 +13,9 @@ const createWindow = () => {
 
   // index.htmlをセットする
   win.loadFile('index.html')
+
+  // デバッグコンソールの表示
+  win.webContents.openDevTools()
 }
 
 // 準備ができたら、windowを作成する
