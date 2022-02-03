@@ -18,6 +18,7 @@ node.js + chromium による統合 gui 環境
   - [styled (styled-components)](./docs/styled.md): js の内部に css を展開する ES6 で実装予定とのこと
 - [electron もろもろ](./docs/electron.md): 実行コマンド、アイコン設定、アプリ用ローカル画像のコピーなど electron 自体を利用する際のもろもろ
 - [modules](./modules): electron 標準の module の動作サンプル。メニュー設定など
+- [app](./docs/app.md): app インスタンスを利用した、アプリ情報の取得や操作
 
 ## 初期構築
 
