@@ -9,7 +9,7 @@ node.js + chromium による統合 gui 環境
 ## ドキュメント
 
 - [quickstart](./quickstart): とりあえずやってみる
-- [サンプル](./samples/basic): electron の動作実装サンプルです(electron-forge + webpack + typescript + react で構成)
+- [サンプル](./samples/my-template): electron の実利用サンプル(electron-forge + webpack + typescript + アプリ用の config ファイル管理 + tailwindcss をベースに構成)
 - [プロセス](./docs/process.md): メイン/レンダラー(+preload)プロセスについてと、ipc を利用した app 情報の取得
 - [svelte](./docs/svelte.md): UI フレームワーク。とても記述が完結で、何よりも store の扱いが非常に楽
   - 最新の main ブランチではこちらで UI を実装している(src/preload.ts でコメントの切り替えで react も動作します)

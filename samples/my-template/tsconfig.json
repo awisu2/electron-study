@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES2015",
+    "module": "ES2015",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "paths": {
+      "*": ["node_modules/*"],
+      "@libs/*": ["src/libs/*"],
+      "@svelte/*": ["src/svelte/*"],
+      "@components/*": ["src/svelte/components/*"],
+      "@store/*": ["src/svelte/store/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
