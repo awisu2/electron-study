@@ -31,6 +31,9 @@ const createWindow = (): void => {
   if (!app.isPackaged) {
     mainWindow.webContents.openDevTools()
   }
+
+  // setting menu(if set null hide.)
+  mainWindow.setMenu(null)
 }
 
 // This method will be called when Electron has finished

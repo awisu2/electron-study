@@ -28,7 +28,11 @@ electron 自体の module のまとめ
 - mac は他 OS(linux、windows)とは異なる体系のメニューを持つ
   - [Menu \| Electron](https://www.electronjs.org/ja/docs/latest/api/menu#macos-%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
 
-### メニューを空で設定するサンプル
+### メニュー設定
+
+- メニューを消す: `mainWindow.setMenu(null)`
+
+テンプレートからメニューを設定する
 
 ```js
 // menuの設定
