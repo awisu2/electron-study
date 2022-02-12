@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button {
+  @apply border-gray-300 border rounded-sm bg-gray-100 cursor-pointer px-2;
+}

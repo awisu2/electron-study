@@ -1,9 +1,10 @@
-import { ipcMain } from 'electron'
+import { ipcMain, BrowserWindow } from 'electron'
 import { App } from './app'
 import {
   GET_APPDATA_CHANNEL,
   SAVE_CONFIG_CHANNEL,
-  READ_CONFIG_CHANNEL
+  READ_CONFIG_CHANNEL,
+  OPEN_DEV_TOOL_CHANNEL
 } from '../share/ipc'
 import { AppData } from '../share/app'
 import { Config } from '../share/config'
@@ -28,5 +29,15 @@ export const configHandlers = (): void => {
 
   ipcMain.handle(SAVE_CONFIG_CHANNEL, (_, config: Config): void => {
     saveConfig(config)
+  })
+}
+
+export const openDebugHandler = (): void => {
+  ipcMain.handle(OPEN_DEV_TOOL_CHANNEL, (): void => {
+    // INFO: can't get render window directly
+    const window = BrowserWindow.getFocusedWindow()
+    if (!window) return
+
+    window.webContents.openDevTools()
   })
 }

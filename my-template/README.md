@@ -2,9 +2,12 @@
 
 ざっくり通常必要になりそうな構成のサンプル
 
-まるごとコピーして、package.json の name など基礎部分を書き換えれば動くと思われる
-
-- electron-forge (webpack + typescript) + svelte + tailwindcss + electron で通常利用しそうな構成
+- can use it just copy. but please change name or any setting of package.json.
+- this package has the following features
+  - electron-forge (webpack + typescript) + svelte + tailwindcss + postcss + electron
+  - write config file in userData directory(win: `C:\Users\awisu\AppData\Roaming\{appname}`)
+  - reading config file before create window because config file has window size and otehr.
+  - can open devtool from render process click event
 
 ## プロジェクトを作成し、preload 設定を行う
 
